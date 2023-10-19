@@ -1,21 +1,56 @@
 body{
-    background-color:rgb(255, 192, 192);
+    background-color:rgb(249, 198, 198);
     color:rgb(255, 255, 255);
     font-family:monospace;
 }
 h1{
-    
+    font-size: 100px;
 }
 .big{
-    font-size: 100px;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 #red{
     color:crimson;
 }
 #green{
-    color:chartreuse;
+    color:rgb(211, 255, 168);
 }
 #yellow{
     color:lightgoldenrodyellow;
+}
+a:hover{
+    color:bisque;
+    font-size:40px;
+}
+#title{
+    text-align: center;
+}
+#content{
+    width:70%;
+    position: relative;
+    left: 15%;
+    padding: 20px;
+}
+.left{
+    float: left;
+    width: 60%;
+}
+.right{
+    float: right;
+    width: 45%;
+}
+
+.two-columns:after{
+    content:"";
+    display:table;
+    clear:both;
+}
+#footer{
+    text-align: center;
+    font-size: 9px;
+}
+#p5-canvas{
+    position:absolute;
+    left: 50px;
+    top: 10px;
 }
