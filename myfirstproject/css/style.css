@@ -4,6 +4,7 @@ body{
     font-family:monospace;
 }
 h1{
+    text-align: center;
     font-size: 100px;
 }
 .big{
@@ -51,6 +52,6 @@ a:hover{
 }
 #p5-canvas{
     position:absolute;
-    left: 50px;
+    left: 500px;
     top: 10px;
 }
