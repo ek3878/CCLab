@@ -1,0 +1,76 @@
+body{
+    /* margin: 5% auto; */
+    background-color: #fff;
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Courier New', Courier, monospace; */
+}
+
+.box{
+    /* width: 100%;
+    height: 500px; */
+    padding-left: 40%;
+    padding-right: 40%;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    margin: 100px;
+    /* border: 10%; */
+    /* display: inline-block; */
+}
+.box-1{
+    text-align: center;
+    font-size: 50px;
+    /* width: 100%; */
+    /* height: 100px; */
+    /* padding: 10%; */
+    background-color: rgb(255, 105, 180);
+    /* position:fixed; */
+    /* top: 30px;
+    left: 100px; */
+    /* z-index: -1; */
+    /* display: none; */
+    /* visibility: hidden; */
+}
+.box-2{
+    background-color: rgb(255, 255, 133);
+}
+.box-3{
+    background-color: rgb(47, 238, 37);
+    /* position:sticky;
+    top: 30px; */
+}
+.big{
+    /* width: 1000px;
+    height: 500px; */
+    /* padding: 10%; */
+    background-color: rgb(183, 234, 248);
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
+}
+.flex-container{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    /* justify-content:space-between; */
+    width: 90%;
+    /* flex-wrap:wrap; */
+    margin: 0 auto;
+}
+#myContainer{
+    /* width: 100%; */
+
+}
+#myContainer2{
+    
+}
+canvas{
+    width: 100% !important;
+    height: 100% !important;
+
+}
+span{
+    background-color: aqua;
+    margin: 5px;
+    display:block;
+}
