@@ -57,6 +57,7 @@ body{
     /* flex-wrap:wrap; */
     margin: 0 auto;
 }
+
 #myContainer{
     /* width: 100%; */
 
@@ -73,4 +74,10 @@ span{
     background-color: aqua;
     margin: 5px;
     display:block;
+}
+
+#p5-canvas{
+    position:absolute;
+    left: 500px;
+    top: 10px;
 }

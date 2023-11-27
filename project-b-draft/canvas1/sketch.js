@@ -1,74 +1,48 @@
-// CCLab Mini Project - 9.R Particles Template
+let mcqueen, sheriff, sally;
+let x, y;
+let button="green";
 
-let NUM_OF_PARTICLES = 20; // Decide the initial number of particles.
+function preload(){
+  mcqueen=loadImage("maqueen.png")
+  sheriff=loadImage("sheriff.png")
+  sally=loadImage("sally.png")
+}
 
-let particles = [];
 
 function setup() {
-  let canvas=createCanvas(500, 500);
-  canvas.parent("myContainer")
-  // let canvas = createCanvas(600, 600);
-  // canvas.parent("canvasWrapper");
-  let turnx = random(100,500)
-  let turny = random(100,500)
-  console.log(turnx, turny)
-
-  // generate particles
-  for (let i = 0; i < NUM_OF_PARTICLES; i++) {
-    particles[i] = new Particle(random(width), random(height), turnx, turny);
-  }
+  // let canvas=createCanvas(500, 500);
+  // canvas.parent("myContainer")
+  createCanvas(500, 500);
+  x = width/2-65;
+  y = height/2;
 }
 
 function draw() {
-  background(20,45);
+  background(220);
+  image(mcqueen,x,y,140,80)
+  image(sheriff,x+350,y-30,130,150)
+  image(sally,x+700,y,130,70)
   
-  // update and display
-  for (let i = 0; i < particles.length; i++) {
-    let p = particles[i];
-    p.update();
-    p.display();
-  }
+  fill(button)
+  rect(425,220,50,50)
+  rect(25,220,50,50)
+  
 }
 
-class Particle {
-  // constructor function
-  constructor(startX, startY, turnx, turny) {
-    // properties: particle's characteristics
-    this.x = startX;
-    this.y = startY;
-    this.dia = 20;
-    this.angle = 0;
-    this.isx=startX;
-    this.turnx=turnx
-    this.turny=turny
-    
+function mousePressed(){
+  if (mouseX>425 && mouseX<475 && mouseY>220 && mouseY<270){
+    x-=350
+   if (x<-2000){
+     x=width/2-65
+   }
+   // }else{
+   //   button="red"
+   // }
   }
-  // methods (functions): particle's behaviors
-  update() {
-    // (add) 
-    
-    this.angle = this.angle + 0.01; 
-    
-  }
-  display() {
-    // particle's appearance
-    push();
-    //rotate within x and y
-    translate(this.turnx, this.turny);
-    rotate(this.angle);
-    for(let i=0; i < 6; i++){
-      //rotate of the circles
-      push();
-      rotate(this.x);
-      // d bet circle and mid point
-      let R = this.isx;
-      let a = R*sin(PI/0.3);
-      let b = R*cos(PI/0.3);
-      noStroke()
-      circle(a, b, this.dia);
-      pop();
-    }
-    pop();
+  if (mouseX>25 && mouseX<75 && mouseY>220 && mouseY<270){
+    x+=350
+   if (x>2000){
+     x=width/2-65
+   }
   }
 }
-
