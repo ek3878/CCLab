@@ -1,48 +1,94 @@
-let mcqueen, sheriff, sally;
+//let mcqueen, sheriff, sally;
 let x, y;
-let button="green";
+let img = [];
+let cars = [];
+let counter = 0;
+let choose = true;
 
-function preload(){
-  mcqueen=loadImage("maqueen.png")
-  sheriff=loadImage("sheriff.png")
-  sally=loadImage("sally.png")
+function preload() {
+  img[0] = loadImage("maqueen.png");
+  img[1] = loadImage("sheriff.png");
+  img[2] = loadImage("sally.png");
+  bg = loadImage("bg.jpeg");
 }
 
-
 function setup() {
-  // let canvas=createCanvas(500, 500);
-  // canvas.parent("myContainer")
-  createCanvas(500, 500);
-  x = width/2-65;
-  y = height/2;
+  let canvas = createCanvas(windowWidth, windowHeight);
+  canvas.parent("canvasContainer");
+
+  // createCanvas(600, 400);
+
+  x = windowWidth / 2 - 240;
+  y = windowHeight / 2 + 30;
+
+  for (let i = 0; i < img.length; i++) {
+    cars[i] = new Car(x, y, i);
+  }
 }
 
 function draw() {
-  background(220);
-  image(mcqueen,x,y,140,80)
-  image(sheriff,x+350,y-30,130,150)
-  image(sally,x+700,y,130,70)
-  
-  fill(button)
-  rect(425,220,50,50)
-  rect(25,220,50,50)
-  
+  //background(0);
+  image(bg, 0, 0, windowWidth, windowHeight);
+  //button
+  fill(255);
+  rect(windowWidth - 240, windowHeight/2 - 100, 150, 200);
+  rect(80, windowHeight/2 - 100, 150, 200);
+
+  stage1();  
+
+  if (keyCode == ENTER) {
+    choose = false;
+    image(bg, 0, 0, windowWidth, windowHeight);
+    stage2();
+    storeItem("counter", counter);
+  }
+  //console.log(counter);
 }
 
-function mousePressed(){
-  if (mouseX>425 && mouseX<475 && mouseY>220 && mouseY<270){
-    x-=350
-   if (x<-2000){
-     x=width/2-65
-   }
-   // }else{
-   //   button="red"
-   // }
+function stage1() {
+  if (counter >= img.length) {
+    counter = 0;
   }
-  if (mouseX>25 && mouseX<75 && mouseY>220 && mouseY<270){
-    x+=350
-   if (x>2000){
-     x=width/2-65
-   }
+  if (counter < 0) {
+    counter = img.length - 1;
+  }
+
+  cars[counter].display();
+}
+
+function stage2() {
+  cars[counter].display();
+  cars[counter].move();
+}
+
+function mousePressed() {
+  if (
+    mouseX > windowWidth - 240 &&
+    mouseX < windowWidth - 90 &&
+    mouseY > windowHeight/2 - 100 &&
+    mouseY < windowHeight/2 + 100
+
+  ) {
+    counter = counter + 1;
+  }
+  if (mouseX > 80 && mouseX < 230 && mouseY > windowHeight/2 - 100 && mouseY < windowHeight/2 + 100) {
+    counter = counter - 1;
+  }
+}
+
+class Car {
+  constructor(x, y, index) {
+    this.x = x;
+    this.y = y;
+    this.img = img[index];
+  }
+  display() {
+    image(this.img, this.x, this.y, windowWidth*0.3, windowHeight*0.25);
+    //image(this.img, this.x, this.y, 170, 100);
+  }
+  move() {
+    if (this.x < width) {
+      this.x += 5;
+    }
   }
 }
