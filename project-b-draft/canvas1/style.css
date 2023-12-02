@@ -1,15 +1,32 @@
-.canvas{
-    margin: 0;
-    padding:0;
-}
+/* .body{
+  width: 600px;
+  height: 400px;
+
+} */
+
+/* .canvas{
+    margin: 100px;
+    padding:100px;
+    width: 100% !important;
+    height: 100% !important;
+} */
 
 .iframe{
     display: block;
 }
 
 #canvasContainer{
+  /* margin: 100px; */
+  /* padding:100px; */
+  /* position: absolute; */
+  /* left: 0px;
+  top: 0px; */
+  width:900px;
+  height:450px;
   position: absolute;
-  left: 0px;
-  top: 0px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top:0;
+  bottom:0;
 }
-
