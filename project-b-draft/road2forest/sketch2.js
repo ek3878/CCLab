@@ -1,8 +1,12 @@
-let bgx = 0;
-let transit = 0;
 let img = [];
 let cars = [];
-let x, y, w, h;
+
+let bgx = 0; //the long conncected pictures
+let transit = 0; //the white part bet
+let x, y, w, h; // user's
+let move = false; //to start the trap when move
+let endsize = 1; //the size for AHHH
+let wind;
 
 function preload() {
   //cars
@@ -13,16 +17,20 @@ function preload() {
   road = loadImage("road.png");
   forest = loadImage("trees.jpeg");
   trap = loadImage("heap.png");
+
+  wind = loadSound("wind.mp3")
 }
 
 function setup() {
-  let canvas = createCanvas(windowWidth, windowHeight);
+  let canvas = createCanvas(1000, 500);
   canvas.parent("canvasContainer2");
-//   createCanvas(600, 400);
+  //createCanvas(1000, 500);
   counter = getItem("counter");
-  x = -100;
-  y = windowHeight/2;
+  // x = width / 2 - 85;
+  x = -200
+  y = height / 2;
 
+  wind.play()
 
   //carsarray
   for (let i = 0; i < img.length; i++) {
@@ -32,51 +40,91 @@ function setup() {
 
 function draw() {
   background(255, 50);
-  image(road, bgx, 0, windowWidth, windowHeight);
-  image(road, windowWidth + bgx, 0, windowWidth, windowHeight);
-  image(forest, 2*windowWidth + bgx, 0, windowWidth, windowHeight);
-  image(trap, 3*windowWidth+100 + bgx, windowHeight-500, 300, 100);
+  image(road, bgx, 0, 1000, 500);
+  image(road, 800 + bgx, 0, 800, 500);
+  image(forest, 1685 + bgx, 0, 1010, 500);
+  image(trap, 2250 + bgx, height - 80, 220, 50);
 
   user = new Car(x, y, counter);
   user.display();
 
-  if(x<windowWidth / 2 - 400){
-    x+=2
+  if(x<width/2 - 85){
+    x+=3
   }
-  
 
   if (keyCode == ENTER) {
-    if (bgx < -windowWidth) {
+    if (bgx < -300) {
       noStroke();
       fill(255, transit);
-      rect(bgx, 0, windowWidth * 2, windowHeight);
+      rect(bgx, 0, width * 1.7, height);
       transit += 5;
       if (transit > 250) {
-        x = 100;
-        y = windowHeight/2;
+        x = 50;
+        y = height / 2 + 120;
       }
     }
 
-    if (bgx > -2*windowWidth) {
-      bgx -= 100;
+    if (bgx > -1700) {
+      bgx -= 2;
+
     }
   }
+  //console.log(bgx);
 
-  startTrap();
+  if (bgx < -500 && bgx > -650) {
+    textSize(25);
+    fill(0);
+    text("Where will we be...", width / 2, height / 2);
+  }
+
+  if (bgx < -1600) {
+    fill(255);
+    ellipse(width / 2 + 40, height / 2 - 90, 700, 90);
+    textSize(25);
+    fill(0);
+    text(
+      "We drove to a random forest! Let's go more and see!",
+      width / 2 - 250,
+      height / 2 - 80
+    );
+    move = true;
+    startTrap();
+  }
+  if (endsize > 50) {
+    fill(255);
+    ellipse(width / 2, height / 2, 1000, 1000);
+    textSize(25);
+    fill(0);
+    text(
+      "oh no...",
+      width / 2 - 50,
+      height / 2
+    );
+  }
 }
 
 function startTrap() {
-  if (x > 280) {
-    y = -100;
-    fill(0);
-    rect(300, 360, 170, 10);
-    // w=0
-    // h=0
-  }
+  if (move == true) {
+    if (x > 550) {
+      y = -100;
+      image(forest, -15, 0, 1010, 500);
+      image(trap, 550, height - 80, 220, 50);
+      fill(0);
+      rect(550, height - 50, 220, 10);
 
-  if (keyIsPressed) {
-    if (keyCode == RIGHT_ARROW) {
-      x += 5;
+      fill(255);
+      ellipse(width / 2 + 238, height / 2 + 43, 100 * endsize, 50 * endsize);
+      textSize(25);
+      fill(0);
+      text("AHHH!", width / 2 + 200, height / 2 + 50);
+      endsize += 0.2;
+
+    }
+
+    if (keyIsPressed) {
+      if (keyCode == RIGHT_ARROW) {
+        x += 5;
+      }
     }
   }
 }
@@ -88,7 +136,7 @@ class Car {
     this.img = img[index];
   }
   display() {
-    image(this.img, this.x, this.y, windowWidth*0.3, windowHeight*0.3);
+    image(this.img, this.x, this.y, 170, 100);
   }
   move() {
     if (this.x < width) {

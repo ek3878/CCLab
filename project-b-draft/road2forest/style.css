@@ -1,14 +1,68 @@
-.canvas{
-    margin: 0;
-    padding:0;
+body{
+  margin: auto;
+  background-color: #fff;
+  color: #000;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
 }
+
+.box{
+  background-color: rgb(225, 255, 195);
+}
+
+.big{
+  margin: 100px;
+  text-align: center;
+  padding-top:7cqmin;
+  padding-right: 15%;
+  padding-left: 15%;
+  /* padding-bottom: 68%; */
+}
+
+.transit{
+  font-size: 30px;
+  font-weight: 520;
+  color:brown;
+  padding-top: 45%;
+  padding-bottom: 10%;
+}
+
+#title{
+  margin:50px ;
+  font-size: 80px;
+  font-weight: 600;
+}
+
+#sub{
+  padding-top: 50px;
+  margin:30px ;
+  font-size: 70px;
+  font-weight: 550;
+}
+
+#instruc{
+  font-size: 40px;
+  font-weight: 520;
+  font-style: italic;
+}
+
+#margin{
+  margin:0 ;
+}
+
+
 
 .iframe{
     display: block;
 }
 
 #canvasContainer2{
-  position: absolute;
-  left: 0px;
-  top: 0px;
+  width:1000px;
+  height:450px;
+  position:relative;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top:70px;
+  bottom:0;
 }
