@@ -26,6 +26,7 @@ function setup() {
   canvas.parent("canvasContainer2");
   //createCanvas(1000, 500);
   counter = getItem("counter");
+  console.log(counter);
   // x = width / 2 - 85;
   x = -200
   y = height / 2;
