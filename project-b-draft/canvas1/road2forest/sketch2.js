@@ -8,6 +8,10 @@ let move = false; //to start the trap when move
 let endsize = 1; //the size for AHHH
 let wind;
 
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const counter = urlParams.get("carIndex") 
+
 function preload() {
   //cars
   img[0] = loadImage("maqueen.png");
@@ -22,11 +26,12 @@ function preload() {
 }
 
 function setup() {
+
   let canvas = createCanvas(1000, 500);
   canvas.parent("canvasContainer2");
   //createCanvas(1000, 500);
-  counter = getItem("counter");
-  console.log(counter);
+  //counter = getItem("counter");
+  // console.log(counter);
   // x = width / 2 - 85;
   x = -200
   y = height / 2;
@@ -37,7 +42,7 @@ function setup() {
   for (let i = 0; i < img.length; i++) {
     cars[i] = new Car(x, y, i);
   }
-  user = new Car(x, y, counter);
+  
 }
 
 function draw() {
@@ -47,8 +52,9 @@ function draw() {
   image(forest, 1685 + bgx, 0, 1010, 500);
   image(trap, 2250 + bgx, height - 80, 220, 50);
 
-  
+  user = new Car(x, y, counter);
   user.display();
+  
 
   if(x<width/2 - 85){
     x+=3

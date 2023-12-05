@@ -49,7 +49,7 @@ let nextButton = document.getElementById("nextButton")
 function goToNextPage(){
   // go to next 
   window.location = "road2forest/index.html?carIndex="+counter
-
+  
 // google acces url parameter
 
 }
