@@ -37,6 +37,7 @@ function setup() {
   for (let i = 0; i < img.length; i++) {
     cars[i] = new Car(x, y, i);
   }
+  user = new Car(x, y, counter);
 }
 
 function draw() {
@@ -46,7 +47,7 @@ function draw() {
   image(forest, 1685 + bgx, 0, 1010, 500);
   image(trap, 2250 + bgx, height - 80, 220, 50);
 
-  user = new Car(x, y, counter);
+  
   user.display();
 
   if(x<width/2 - 85){
