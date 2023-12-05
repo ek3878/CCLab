@@ -45,6 +45,16 @@ function draw() {
   //console.log(counter);
 }
 
+let nextButton = document.getElementById("nextButton")
+function goToNextPage(){
+  // go to next 
+  window.location = "road2forest/index.html?carIndex="+counter
+
+// google acces url parameter
+
+}
+nextButton.addEventListener("click", goToNextPage)
+
 function stage1() {
   if (counter >= img.length) {
     counter = 0;
