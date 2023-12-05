@@ -11,7 +11,7 @@ function preload() {
   img[1] = loadImage("sheriff.png");
   img[2] = loadImage("sally.png");
   bg = loadImage("bg.jpeg");
-  carengine = loadSound("asset/carengine.mp3")
+  carengine = loadSound("carengine.mp3")
 }
 
 function setup() {
